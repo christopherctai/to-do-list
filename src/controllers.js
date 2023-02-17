@@ -43,7 +43,6 @@ const projectController = () => {
         let project = projectFactory(projectID, title, []);
         projectID++;
         projects.push(project);
-        conole.log('this is an error');
         return project;
     }
 

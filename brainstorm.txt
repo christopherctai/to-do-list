@@ -42,6 +42,9 @@ projectController
 -can delete a note from a project 
 
 DISPLAYERS
+
+
+
 projectDisplayer (DOM)
 -displays a project 
 -relies on noteDisplayer
@@ -49,9 +52,15 @@ projectDisplayer (DOM)
 noteDisplayer (DOM)
 -displays a note 
 
-textDisplayer (DOM)
--changes the text of something 
-
 displayController (DOM)
 -displays the to-do-list 
+
+UTILS 
+
+makeEditable
+-makes text editable 
+
+makeUneditable
+-makes text uneditable 
+
 
