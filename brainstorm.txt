@@ -1,0 +1,48 @@
+Requirements:  
+-have to-do items with title, description, dueDate, priority 
+-projects or separate lists of todos 
+-a default project where all the initial todos go
+-users should be able to create new projects and choose which projects the todos go into 
+-user interface: 
+--view all projects 
+--view all todos in each project (just title and duedate and color for priorities) 
+--expand a todo to see/edit details 
+--delete a todo 
+
+Important notes: 
+-separate your application logic (ie, creating new todos, setting them as complete, changing priority, etc.) from your DOM-related stuff that gets DOM stuff and changes it 
+
+Modules: 
+
+Note 
+-information holder object 
+-contains title, description, dueDate, priority
+-has an ID 
+-has functions to change its title, description, dueDate, and priority 
+
+Project
+-information holder object 
+-contains an array of Notes 
+
+projectInformation 
+-information holder object 
+-contains an array of projects 
+
+
+projectController
+-can create a new empty project 
+-can delete a project 
+-can add a note to a project 
+-can delete a note from a project 
+
+projectDisplayer (DOM)
+-displays a project 
+-relies on noteDisplayer
+
+noteDisplayer (DOM)
+-displays a note 
+
+textDisplayer (DOM)
+-changes the text of something 
+
+
