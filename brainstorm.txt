@@ -14,6 +14,8 @@ Important notes:
 
 Modules: 
 
+
+INFORMATION HOLDERS 
 Note 
 -information holder object 
 -contains title, description, dueDate, priority
@@ -28,13 +30,14 @@ projectInformation
 -information holder object 
 -contains an array of projects 
 
-
+CONTROLLERS
 projectController
 -can create a new empty project 
 -can delete a project 
 -can add a note to a project 
 -can delete a note from a project 
 
+DISPLAYERS
 projectDisplayer (DOM)
 -displays a project 
 -relies on noteDisplayer
@@ -45,4 +48,6 @@ noteDisplayer (DOM)
 textDisplayer (DOM)
 -changes the text of something 
 
+displayController (DOM)
+-displays the to-do-list 
 
