@@ -8,3 +8,6 @@
 // sidebarDisplayer displays the sidebar. Needs access to the list of project titles
 
 // displayController controls the display of the to-do list 
+const displayController = () => {
+    
+}
