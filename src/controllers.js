@@ -1,4 +1,7 @@
-import { noteFactory, projectFactory, projectInformation } from './info-holders';
+// Controllers 
+// Objects that can manipulate the notes or projects themselves 
+
+import { noteFactory, projectFactory } from './info-holders';
 
 const noteController = () => {
     let noteID = 0;
@@ -40,6 +43,7 @@ const projectController = () => {
         let project = projectFactory(projectID, title, []);
         projectID++;
         projects.push(project);
+        conole.log('this is an error');
         return project;
     }
 
@@ -47,18 +51,12 @@ const projectController = () => {
     const deleteProject = (project) => {
         projects.splice(projects.indexOf(project), 1);
     }
-
-    
     
     return {
         projects,
         createProject,
         deleteProject,
     }
-}
-
-const noteProjectStructurer = () => {
-    
 }
 
 export {

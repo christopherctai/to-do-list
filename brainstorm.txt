@@ -30,6 +30,10 @@ projectInformation
 -information holder object 
 -contains an array of projects 
 
+STRUCTURER 
+noteProjectStructurer 
+-when a user adds a note, it goes into a particular project 
+
 CONTROLLERS
 projectController
 -can create a new empty project 

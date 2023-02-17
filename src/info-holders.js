@@ -19,7 +19,7 @@ const noteFactory = (id, title, description, dueDate, priority) => {
 }
 
 
-
+// Project factory creates projects 
 const projectFactory = (id, title, noteArray) => {
     const getTitle = () => title;
     
