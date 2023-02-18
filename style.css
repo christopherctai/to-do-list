@@ -101,9 +101,9 @@ body {
     width: 225px; 
     display: flex; 
     flex-direction: column; 
-    gap: 5px; 
+    gap: 8px; 
     align-items: center;
-    justify-content: center; 
+    justify-content: top;  
     overflow-wrap: break-word;
 
     border: 2px solid var(--grey); 
