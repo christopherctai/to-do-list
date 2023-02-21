@@ -11,7 +11,7 @@ const displayController = () => {
 
 // projectDisplayer helps displays the project
 const projectDisplayer = () => {
-    const displayProject = () => {
+    const displayProject = (project) => {
         // Select the content area 
         let content = document.querySelector('.content');
     
@@ -19,7 +19,7 @@ const projectDisplayer = () => {
         content.textContent = '';
     
         // Append the content 
-        content.append(createProjectDisplay());
+        content.append(createProjectDisplay(project));
     }
 
 
@@ -30,14 +30,14 @@ const projectDisplayer = () => {
 }
 
 
-const createProjectDisplay = (projectArray) => {
+const createProjectDisplay = (Project) => {
     // Create the project div 
     let project = document.createElement('div');
-    project.classList.append('project');
+    project.classList.add('project'); 
 
     // Append notes to the project 
-    for (let i = 0; i < projectArray.length; i++) {
-        let note = createNoteDisplay(projectArray[i]);
+    for (let i = 0; i < Project.noteArray.length; i++) {
+        let note = createNoteDisplay(Project.noteArray[i]);
         project.appendChild(note);
     }
 

@@ -1,24 +1,26 @@
 import * as InfoHolders from './info-holders.js';
 import * as Controllers from './controllers.js';
 import * as Structurers from './structurers.js';
+import * as Displayers from './displayers.js';
 
-
+// Test control 
 console.log("hello world");
 
+// Create a note
 const noteController = Controllers.noteController();
-let noteOne = noteController.createNote("hi", "test description", "May 1st", "urgent");
-console.log(noteOne);
+const projectController = Controllers.projectController();
+const noteProjectStructurer = Structurers.noteProjectStructurer();
+const projectDisplayer = Displayers.projectDisplayer();
 
+let noteOne = noteController.createNote("hi", "test description", "May 1st", "urgent");
 let noteTwo = noteController.createNote('again', 'second note', 'right now', 'right now');
 
-const projectController = Controllers.projectController();
 let projectOne = projectController.createProject("new project");
 
-let projectTwo = projectController.createProject('another new project');
-
-const noteProjectStructurer = Structurers.noteProjectStructurer();
 noteProjectStructurer.addNoteToProject(projectOne, noteOne);
-console.log(projectOne);
+noteProjectStructurer.addNoteToProject(projectOne, noteTwo);
 
-noteProjectStructurer.deleteNoteFromProject(projectOne, noteOne);
-console.log(projectOne);
+console.log(projectController.projects);
+
+projectDisplayer.displayProject(projectController.projects[0]); 
+
