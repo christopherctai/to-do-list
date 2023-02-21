@@ -86,6 +86,16 @@ body {
     background-color: var(--dark-green); 
 }
 
+.btn.close-btn {
+    position: absolute;
+    font-size: 13px;
+    padding: 6px; 
+
+    left: 81%;
+    top: 3%; 
+
+}
+
 .content {
     background-color: var(--grey);
 }
@@ -98,6 +108,8 @@ body {
 }
 
 .note {
+    position: relative;
+
     width: 225px; 
     display: flex; 
     flex-direction: column; 
@@ -110,6 +122,8 @@ body {
     border-radius: 10px; 
     box-shadow: 2px 2px 4px 1px gray;
     padding: 20px;
+    padding-top: 40px; 
+
 }
 
 .note .title {

@@ -48,6 +48,11 @@ const createNoteDisplay = (Note) => {
     let note = document.createElement('div');
     note.classList.add('note');
 
+    // Create button
+    let button = document.createElement('button');
+    button.classList.add('btn', 'close-btn');
+    button.textContent = 'Done!';
+
     // Create title
     let title = document.createElement('div');
     title.classList.add('title');
@@ -68,7 +73,8 @@ const createNoteDisplay = (Note) => {
     priority.classList.add('priority'); 
     priority.textContent = Note.priority;
 
-    note.append(title, description, dueDate, priority);
+    // Append elements
+    note.append(button, title, description, dueDate, priority);
 
     return note;
 }
