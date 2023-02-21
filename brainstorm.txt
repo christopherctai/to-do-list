@@ -44,7 +44,6 @@ projectController
 DISPLAYERS
 
 
-
 projectDisplayer (DOM)
 -displays a project 
 -relies on noteDisplayer
