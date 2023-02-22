@@ -97,7 +97,33 @@ body {
 }
 
 .add-note-form {
-    position: absolute; 
+    z-index: 1; 
+    position: fixed; 
+    top: 30%;
+    left: 50%;
+
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 10px;  
+    box-shadow: 2px 2px 4px 1px gray;
+
+    display: flex; 
+    flex-direction: column; 
+    gap: 12px;
+}
+
+.form-title {
+    font-size: 24px; 
+}
+
+.form-row {
+    display: flex; 
+    flex-direction: column; 
+    gap: 2px; 
+}
+
+label {
+    font-weight: 700; 
 }
 
 .content {
