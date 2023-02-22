@@ -96,6 +96,10 @@ body {
 
 }
 
+.add-note-form {
+    position: absolute; 
+}
+
 .content {
     background-color: var(--grey);
 }
@@ -129,6 +133,13 @@ body {
 .note .title {
     font-weight: 700; 
     font-size: 20px;  
+}
+
+.title,
+.description,
+.dueDate,
+.priority {
+    padding: 5px;
 }
 
 .footer {
