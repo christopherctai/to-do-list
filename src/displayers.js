@@ -1,6 +1,7 @@
 // Displayers 
 // Objects that will display the given information 
 
+import { format } from 'date-fns';
 
 
 // displayController controls the display of the to-do list 
@@ -57,21 +58,28 @@ const createNoteDisplay = (Note) => {
     let title = document.createElement('div');
     title.classList.add('title');
     title.textContent = Note.title;
+    title.setAttribute('contenteditable', 'true');
     
     // Create description
     let description = document.createElement('div');
     description.classList.add('description');
     description.textContent = Note.description;
+    description.setAttribute('contenteditable', 'true');
+
 
     // Create dueDate
     let dueDate = document.createElement('div');
     dueDate.classList.add('dueDate');
     dueDate.textContent = Note.dueDate;
+    dueDate.setAttribute('contenteditable', 'true');
+
 
     // Create priority 
     let priority = document.createElement('div');
     priority.classList.add('priority'); 
     priority.textContent = Note.priority;
+    priority.setAttribute('contenteditable', 'true');
+
 
     // Append elements
     note.append(button, title, description, dueDate, priority);
@@ -89,6 +97,42 @@ const noteDisplayer = () => {
 // sidebarDisplayer displays the sidebar. Needs access to the list of project titles
 const sidebarDisplayer = () => {
 
+}
+
+const updateInfo = (pieceOfInfo, contentOfInfo, project) => {
+    project.pieceOfInfo = contentOfInfo; 
+    
+}
+
+const initNoteButtons = () => {
+    const titles = document.querySelectorAll('.title');
+    const descriptions = document.querySelectorAll('.description');
+    const dueDates = document.querySelectorAll('.dueDate');
+    const priorities = document.querySelectorAll('.priority');
+
+    titles.forEach((title) => {
+        title.addEventListener('change', () => {
+            updateInfo(title, title.textContent);
+        })
+    })
+
+    descriptions.forEach((description) => {
+        description.addEventListener('change', () => {
+            updateInfo(description, description.textContent);
+        })
+    })
+
+    dueDates.forEach((dueDate) => {
+        dueDate.addEventListener('change', () => {
+            updateInfo(dueDate, dueDate.textContent);
+        })
+    })
+
+    priorities.forEach((priority) => {
+        priority.addEventListener('change', () => {
+            updateInfo(priority, priority.textContent);
+        })
+    })
 }
 
 export {

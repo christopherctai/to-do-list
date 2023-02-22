@@ -63,3 +63,13 @@ makeUneditable
 -makes text uneditable 
 
 
+TODO: 
+-make a form 
+-link the form to the projects array (remember that you need to add to a particular project!)
+-allow content to be edited 
+-when content is edited it needs to update the project array! 
+
+
+-could use a change event listener for the last one 
+
+

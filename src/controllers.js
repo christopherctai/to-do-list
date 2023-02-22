@@ -18,7 +18,7 @@ const noteController = () => {
 
     // Allow users to change the description of the note 
     const changeDescription = () => {
-
+        
     }
 
     // Allow users to change the note's priority 
