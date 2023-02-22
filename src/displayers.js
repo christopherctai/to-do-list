@@ -32,17 +32,20 @@ const projectDisplayer = () => {
 
 
 const createProjectDisplay = (Project) => {
-    // Create the project div 
-    let project = document.createElement('div');
-    project.classList.add('project'); 
+    // Create the project title div 
+    let projectTitle = document.createElement('div');
+    
+    // Create the project content div 
+    let projectContent = document.createElement('div');
+    projectContent.classList.add('project'); 
 
     // Append notes to the project 
     for (let i = 0; i < Project.noteArray.length; i++) {
         let note = createNoteDisplay(Project.noteArray[i]);
-        project.appendChild(note);
+        projectContent.appendChild(note);
     }
 
-    return project;
+    return projectContent;
 }
 
 const createNoteDisplay = (Note) => {
@@ -99,12 +102,13 @@ const sidebarDisplayer = () => {
 
 }
 
-const updateInfo = (pieceOfInfo, contentOfInfo, project) => {
-    project.pieceOfInfo = contentOfInfo; 
+const updateInfo = (pieceOfInfo, contentOfInfo, note) => {
+    note.pieceOfInfo = contentOfInfo; 
     
 }
 
 const initNoteButtons = () => {
+    const projectName = document.querySelector('.active').textContent;
     const titles = document.querySelectorAll('.title');
     const descriptions = document.querySelectorAll('.description');
     const dueDates = document.querySelectorAll('.dueDate');
@@ -112,25 +116,25 @@ const initNoteButtons = () => {
 
     titles.forEach((title) => {
         title.addEventListener('change', () => {
-            updateInfo(title, title.textContent);
+            updateInfo(title, title.textContent, note);
         })
     })
 
     descriptions.forEach((description) => {
         description.addEventListener('change', () => {
-            updateInfo(description, description.textContent);
+            updateInfo(description, description.textContent, note);
         })
     })
 
     dueDates.forEach((dueDate) => {
         dueDate.addEventListener('change', () => {
-            updateInfo(dueDate, dueDate.textContent);
+            updateInfo(dueDate, dueDate.textContent, note);
         })
     })
 
     priorities.forEach((priority) => {
         priority.addEventListener('change', () => {
-            updateInfo(priority, priority.textContent);
+            updateInfo(priority, priority.textContent, note);
         })
     })
 }
