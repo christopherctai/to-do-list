@@ -101,11 +101,12 @@ body {
     position: fixed; 
     top: 30%;
     left: 50%;
+    width: 400px;
 
     background-color: var(--white);
     padding: 20px;
     border-radius: 10px;  
-    box-shadow: 2px 2px 4px 1px gray;
+    box-shadow: 4px 4px 6px 4px gray;
 
     display: flex; 
     flex-direction: column; 
@@ -114,6 +115,8 @@ body {
 
 .form-title {
     font-size: 24px; 
+    font-weight: 700;
+    text-align: center;
 }
 
 .form-row {
