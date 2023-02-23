@@ -13,9 +13,6 @@ const projectController = Controllers.projectController();
 const noteProjectStructurer = Structurers.noteProjectStructurer();
 
 
-projectController.createProject('My Project');
-
-
 
 // displayController controls the display of the to-do list 
 const displayController = () => { 
@@ -30,8 +27,8 @@ const displayController = () => {
         initCloseNoteFormButton();
         initSubmitNoteButton();
 
-        // Initialize sidebar 
-        sidebarDisplayer().displaySidebar(); 
+        // do stuff for checking 
+        sidebarDisplayer().clearSidebar();
     }
 
     const initAddProjectButton = () => {
@@ -104,14 +101,15 @@ const displayController = () => {
 
 // sidebarDisplayer displays the sidebar. Needs access to the list of project titles
 const sidebarDisplayer = () => {
-    const displaySidebar = () => {
-        // Select the sidebar
+
+    const clearSidebar = () => {
         let sidebar = document.querySelector('.project-list');
+        sidebar.textContent = ''; 
+        return sidebar;
+    }
 
-        // Clear the sidebar
-        sidebar.textContent = '';
-
-        // Append the sidebar
+    const displaySidebar = () => {
+        let sidebar = clearSidebar();
         sidebar.append(createSidebarDisplay()) 
     }
 
@@ -127,7 +125,8 @@ const sidebarDisplayer = () => {
     }
 
     return {
-        displaySidebar
+        displaySidebar,
+        clearSidebar
     }
 }
 
