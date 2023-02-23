@@ -53,15 +53,15 @@ const clearNoteForm = () => {
 }
 
 const clearProjectForm = () => {
-    let title = document.getElementById('title');
+    let title = document.getElementById('project-form-title');
 
     title.value = '';
 }
 
 const getActiveProject = (projectName, projectArray) => {
-    console.log(projectName);
     for (let i = 0; i < projectArray; i++) {
         if (projectName === projectArray[i].title) {
+            console.log(projectArray[i]);
             return projectArray[i];
         }
     }

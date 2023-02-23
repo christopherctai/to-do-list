@@ -12,8 +12,6 @@ const noteController = Controllers.noteController();
 const projectController = Controllers.projectController();
 const noteProjectStructurer = Structurers.noteProjectStructurer();
 
-projectController.createProject('My Project');
-
 // displayController controls the display of the to-do list 
 const displayController = () => { 
     const initButtons = () => {
@@ -26,9 +24,6 @@ const displayController = () => {
         initAddNoteButton();
         initCloseNoteFormButton();
         initSubmitNoteButton();
-
-        // do stuff for checking 
-        sidebarDisplayer().clearSidebar();
     }
 
     const initAddProjectButton = () => {
@@ -50,7 +45,7 @@ const displayController = () => {
         submitButton.addEventListener('click', () => {
             let formInfo = Utils.processProjectForm();
             projectController.createProject(formInfo);
-            console.log(projectController.projects); 
+            sidebarDisplayer().displaySidebar();
             Utils.clearProjectForm();
             Utils.closeProjectForm();
         })
@@ -105,18 +100,31 @@ const sidebarDisplayer = () => {
 
     const displaySidebar = () => {
         let sidebar = clearSidebar();
-        sidebar.append(createSidebarDisplay()) 
+        createSidebarDisplay(sidebar);
+        initProjectButtons();
     }
 
-    const createSidebarDisplay = () => {
-        let sidebarProjectList = document.createElement('div');
+    const createSidebarDisplay = (sidebar) => {
         for (let i = 0; i < projectController.projects.length; i++) {
             let sidebarButton = document.createElement('button');
-            sidebarButton.classList.add('btn', 'sidebar-row');
+            sidebarButton.classList.add('btn', 'project-btn');
             sidebarButton.textContent = projectController.projects[i].title;
-            sidebarProjectList.append(sidebarButton);
+            sidebar.append(sidebarButton);
         }
-        return sidebarProjectList;
+    }
+
+    const initProjectButtons = () => {
+        const projectButtons = document.querySelectorAll('.project-btn');
+        projectButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                let activeProject = Utils.getActiveProject(
+                    button.textContent,
+                    projectController.projects
+                );
+                console.log(activeProject);
+                projectDisplayer().displayProject(activeProject);
+            })
+        })
     }
 
     return {
