@@ -16,11 +16,13 @@ const closeForm = () => {
     form.classList.add('hidden');
 }
 
-const processForm = (e) => {
+const processForm = () => {
     let title = document.getElementById("title").value;
     let description = document.getElementById("description").value;
     let dueDate = document.getElementById("dueDate").value;
     let priority = document.getElementById("priority").value;
+
+    return [title, description, dueDate, priority];
 }
 
 const clearForm = () => {

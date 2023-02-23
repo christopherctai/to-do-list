@@ -3,6 +3,18 @@
 
 import { format } from 'date-fns';
 import * as Utils from './utils.js';
+import * as Controllers from './controllers.js';
+import * as Structurers from './structurers.js';
+
+
+// Create controllers
+const noteController = Controllers.noteController();
+const projectController = Controllers.projectController();
+const noteProjectStructurer = Structurers.noteProjectStructurer();
+
+let noteOne = noteController.createNote("hi", "test description", dateFormatted, "urgent");
+let noteTwo = noteController.createNote('again', 'second note', 'right now', 'right now');
+
 
 
 // displayController controls the display of the to-do list 
@@ -11,7 +23,6 @@ const displayController = () => {
         const addNoteButton = document.querySelector('.add-note-btn');
         const closeNoteButton = document.querySelector('.close-btn');
         const submitButton = document.querySelector('.submit-btn');
-        const form = document.querySelector('.add-note-form'); 
         addNoteButton.addEventListener('click', () => {
             Utils.openForm();
         })
@@ -19,7 +30,8 @@ const displayController = () => {
             Utils.closeForm();
         })
         submitButton.addEventListener('click', () => {
-            Utils.processForm();
+            let formInfo = Utils.processForm();
+            
             Utils.clearForm();
             Utils.closeForm();
         })
