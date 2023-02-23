@@ -86,7 +86,7 @@ body {
     background-color: var(--dark-green); 
 }
 
-.btn.close-btn {
+.btn.done-btn {
     position: absolute;
     font-size: 13px;
     padding: 6px; 
@@ -112,6 +112,23 @@ body {
     display: flex; 
     flex-direction: column; 
     gap: 12px;
+}
+
+.add-note-btn {
+    margin-left: auto; 
+}
+
+.btn.close-btn { 
+    display: block; 
+    padding: 3px;   
+    height: 30px; 
+    width: 30px;
+    border-radius: 50%; 
+}
+
+.form-heading {
+    display: flex; 
+    justify-content: space-between;
 }
 
 .form-title {
