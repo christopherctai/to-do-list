@@ -17,6 +17,10 @@ const displayController = () => {
             Utils.closeForm();
         })
     }
+
+    return {
+        initButtons,
+    }
 }
 
 
