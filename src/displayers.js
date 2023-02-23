@@ -2,11 +2,21 @@
 // Objects that will display the given information 
 
 import { format } from 'date-fns';
+import * as Utils from './utils.js';
 
 
 // displayController controls the display of the to-do list 
 const displayController = () => {
-    
+    const initButtons = () => {
+        const addNoteButton = document.querySelector('.add-note-btn');
+        const closeNoteButton = document.querySelector('.close-btn');
+        addNoteButton.addEventListener('click', () => {
+            Utils.openForm();
+        })
+        closeNoteButton.addEventListener('click', () => {
+            Utils.closeForm();
+        })
+    }
 }
 
 
