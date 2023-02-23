@@ -70,17 +70,28 @@ const displayController = () => {
 
     const initSubmitNoteButton = () => {
         const submitButton = document.querySelector('.submit-note-btn');
-        let activeProject = Utils.getActiveProject(
-            document.querySelector('.project-title').textContent, 
-            projectController.projects
-        );
         submitButton.addEventListener('click', () => {
+            // Get active project
+            let activeProject = Utils.getActiveProject(
+                document.querySelector('.project-title').textContent, 
+                projectController.projects
+            );
+
+            // Create note
             let formInfo = Utils.processNoteForm();
             let note = noteController.createNote(`${formInfo[0]}`, 
                 `${formInfo[1]}`,
                 `${formInfo[2]}`,
                 `${formInfo[3]}`);
+            console.log(activeProject);
+
+            // Add note to project 
             noteProjectStructurer.addNoteToProject(activeProject, note);
+            
+            // Display Project 
+            projectDisplayer().displayProject(activeProject);
+
+            // Clean up 
             Utils.clearNoteForm();
             Utils.closeNoteForm();
         })
@@ -145,14 +156,23 @@ const projectDisplayer = () => {
         // Clear the content area
         content.textContent = '';
     
+        // Append the title 
+        content.append(createProjectTitleDisplay(project));
+
         // Append the content 
         content.append(createProjectDisplay(project));
     }
 
-    const createProjectDisplay = (Project) => {
+    const createProjectTitleDisplay = (Project) => {
         // Create the project title div 
         let projectTitle = document.createElement('div');
-        
+        projectTitle.classList.add('project-title');
+        projectTitle.textContent = Project.title; 
+
+        return projectTitle;
+    }
+
+    const createProjectDisplay = (Project) => {
         // Create the project content div 
         let projectContent = document.createElement('div');
         projectContent.classList.add('project'); 
