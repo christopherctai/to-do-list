@@ -17,7 +17,8 @@ console.log(dateFormatted);
 
 // Initialize the page 
 const displayController = Displayers.displayController();
-displayController.initButtons(); 
+displayController.initButtons();  
+ 
 
 
 

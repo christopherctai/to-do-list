@@ -12,7 +12,9 @@ const noteController = Controllers.noteController();
 const projectController = Controllers.projectController();
 const noteProjectStructurer = Structurers.noteProjectStructurer();
 
+
 projectController.createProject('My Project');
+
 
 
 // displayController controls the display of the to-do list 
@@ -27,6 +29,9 @@ const displayController = () => {
         initAddNoteButton();
         initCloseNoteFormButton();
         initSubmitNoteButton();
+
+        // Initialize sidebar 
+        sidebarDisplayer().displaySidebar(); 
     }
 
     const initAddProjectButton = () => {
