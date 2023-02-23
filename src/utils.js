@@ -26,7 +26,7 @@ const closeProjectForm = () => {
     form.classList.add('hidden');
 }
 
-const processForm = () => {
+const processNoteForm = () => {
     let title = document.getElementById("title").value;
     let description = document.getElementById("description").value;
     let dueDate = document.getElementById("dueDate").value;
@@ -35,7 +35,12 @@ const processForm = () => {
     return [title, description, dueDate, priority];
 }
 
-const clearForm = () => {
+const processProjectForm = () => {
+    let title = document.getElementById("project-form-title").value;
+    return title;
+}
+
+const clearNoteForm = () => {
     let title = document.getElementById('title');
     let description = document.getElementById('description');
     let dueDate = document.getElementById('dueDate');
@@ -47,6 +52,12 @@ const clearForm = () => {
     priority.value = '';
 }
 
+const clearProjectForm = () => {
+    let title = document.getElementById('title');
+
+    title.value = '';
+}
+
 export {
     makeEditable,
     makeUneditable,
@@ -54,6 +65,8 @@ export {
     closeNoteForm,
     openProjectForm,
     closeProjectForm,
-    processForm,
-    clearForm
+    processNoteForm,
+    clearNoteForm,
+    processProjectForm,
+    clearProjectForm
 }

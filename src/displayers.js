@@ -20,6 +20,7 @@ const displayController = () => {
     const initButtons = () => {
         initAddProjectButton();
         initCloseProjectFormButton();
+        initSubmitProjectButton();
         initAddNoteButton();
         initCloseNoteFormButton();
         initSubmitNoteButton();
@@ -35,6 +36,16 @@ const displayController = () => {
     const initCloseProjectFormButton = () => {
         const closeProjectFormButton = document.querySelector('.close-project-form-btn');
         closeProjectFormButton.addEventListener('click', () => {
+            Utils.closeProjectForm();
+        })
+    }
+
+    const initSubmitProjectButton = () => {
+        const submitButton = document.querySelector('.submit-project-btn');
+        submitButton.addEventListener('click', () => {
+            let formInfo = Utils.processProjectForm();
+            projectController.createProject(formInfo);
+            Utils.clearProjectForm();
             Utils.closeProjectForm();
         })
     }
@@ -63,7 +74,7 @@ const displayController = () => {
                 `${formInfo[2]}`,
                 `${formInfo[3]}`);
             noteProjectStructurer.addNoteToProject(activeProject, note);
-            Utils.clearForm();
+            Utils.clearNoteForm();
             Utils.closeNoteForm();
         })
     }
