@@ -46,9 +46,21 @@ const displayController = () => {
     const initSubmitProjectButton = () => {
         const submitButton = document.querySelector('.submit-project-btn');
         submitButton.addEventListener('click', () => {
+            // Create Project
             let formInfo = Utils.processProjectForm();
             projectController.createProject(formInfo);
+
+            // Display project 
+            let activeProject = Utils.getActiveProject(
+                formInfo, 
+                projectController.projects
+            );
+            projectDisplayer().displayProject(activeProject);
+
+            // Display sidebar
             sidebarDisplayer().displaySidebar();
+
+            // Clean up
             Utils.clearProjectForm();
             Utils.closeProjectForm();
         })
