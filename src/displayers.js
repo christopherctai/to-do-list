@@ -161,17 +161,23 @@ const sidebarDisplayer = () => {
 // projectDisplayer helps displays the project
 const projectDisplayer = () => {
     const displayProject = (project) => {
-        // Select the content area 
-        let content = document.querySelector('.content');
-    
-        // Clear the content area
-        content.textContent = '';
+        let content = clearProjectContent();
     
         // Append the title 
         content.append(createProjectTitleDisplay(project));
 
         // Append the content 
         content.append(createProjectDisplay(project));
+    }
+
+    const clearProjectContent = () => {
+        // Select the content area 
+        let content = document.querySelector('.content');
+    
+        // Clear the content area
+        content.textContent = '';
+
+        return content;
     }
 
     const createProjectTitleDisplay = (Project) => {
@@ -209,52 +215,53 @@ const projectDisplayer = () => {
             noteProjectStructurer.deleteNoteFromProject(Project, Note);
             note.remove();
         }) 
-
-        /* const initDoneButtons = () => {
-            const doneButtons = document.querySelectorAll('.done-btn');
-            doneButtons.forEach((button) => {
-                button.addEventListener('click', () => {
-                    // Get active Project 
-                    let activeProject = Utils.getActiveProject(
-                        document.querySelector('.project-title'),
-                        projectController.projects
-                        )
-                    // Get active note 
-        
-                    // Delete the note from the project
-                    noteProjectStructurer.deleteNoteFromProject(activeProject, )
-                })
-            })
-        } */
     
         // Create title
         let title = document.createElement('div');
         title.classList.add('title');
         title.textContent = Note.title;
         title.setAttribute('contenteditable', 'true');
+        title.addEventListener('blur', () => {
+            updateNoteInfo(title, title.textContent, Note);
+            console.log(Note.title);
+        })
         
         // Create description
         let description = document.createElement('div');
         description.classList.add('description');
         description.textContent = Note.description;
         description.setAttribute('contenteditable', 'true');
+        description.addEventListener('blur', () => {
+            updateNoteInfo(description, description.textContent, Note);
+        })
     
         // Create dueDate
         let dueDate = document.createElement('div');
         dueDate.classList.add('dueDate');
         dueDate.textContent = Note.dueDate;
         dueDate.setAttribute('contenteditable', 'true');
+        dueDate.addEventListener('blur', () => {
+            updateNoteInfo(dueDate, dueDate.textContent, Note);
+        })
     
         // Create priority 
         let priority = document.createElement('div');
         priority.classList.add('priority'); 
         priority.textContent = Note.priority;
         priority.setAttribute('contenteditable', 'true');
+        priority.addEventListener('blur', () => {
+            updateNoteInfo(priority, priority.textContent, Note);
+            console.log(Note.priority);
+        })
     
         // Append elements
         note.append(button, title, description, dueDate, priority);
     
         return note;
+    }
+
+    const updateNoteInfo = (typeOfInfo, contentOfInfo, note) => {
+        note.typeOfInfo = contentOfInfo; 
     }
 
     return {
@@ -263,13 +270,8 @@ const projectDisplayer = () => {
 }
 
 
-const updateInfo = (pieceOfInfo, contentOfInfo, note) => {
-    note.pieceOfInfo = contentOfInfo; 
-    
-}
 
-const initNoteButtons = () => {
-    const projectName = document.querySelector('.active').textContent;
+const initNoteButtons = (note) => {
     const titles = document.querySelectorAll('.title');
     const descriptions = document.querySelectorAll('.description');
     const dueDates = document.querySelectorAll('.dueDate');
@@ -277,25 +279,25 @@ const initNoteButtons = () => {
 
     titles.forEach((title) => {
         title.addEventListener('change', () => {
-            updateInfo(title, title.textContent, note);
+            updateNoteInfo(title, title.textContent, note);
         })
     })
 
     descriptions.forEach((description) => {
         description.addEventListener('change', () => {
-            updateInfo(description, description.textContent, note);
+            updateNoteInfo(description, description.textContent, note);
         })
     })
 
     dueDates.forEach((dueDate) => {
         dueDate.addEventListener('change', () => {
-            updateInfo(dueDate, dueDate.textContent, note);
+            updateNoteInfo(dueDate, dueDate.textContent, note);
         })
     })
 
     priorities.forEach((priority) => {
         priority.addEventListener('change', () => {
-            updateInfo(priority, priority.textContent, note);
+            updateNoteInfo(priority, priority.textContent, note);
         })
     })
 }
