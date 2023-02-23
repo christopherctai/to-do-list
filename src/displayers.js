@@ -72,9 +72,12 @@ const displayController = () => {
 
     const initSubmitNoteButton = () => {
         const submitButton = document.querySelector('.submit-note-btn');
-        let activeProject = getActiveProject(document.querySelector('.project-title').textContent);
+        let activeProject = Utils.getActiveProject(
+            document.querySelector('.project-title').textContent, 
+            projectController.projects
+        );
         submitButton.addEventListener('click', () => {
-            let formInfo = Utils.processForm();
+            let formInfo = Utils.processNoteForm();
             let note = noteController.createNote(`${formInfo[0]}`, 
                 `${formInfo[1]}`,
                 `${formInfo[2]}`,
@@ -82,15 +85,8 @@ const displayController = () => {
             noteProjectStructurer.addNoteToProject(activeProject, note);
             Utils.clearNoteForm();
             Utils.closeNoteForm();
+            console.log(activeProject);
         })
-    }
-
-    const getActiveProject = (projectName) => {
-        for (let i = 0; i < projectController.projects.length; i++) {
-            if (projectName === projectController.projects[i].title) {
-                return projectController.projects[i];
-            }
-        }
     }
 
     return {

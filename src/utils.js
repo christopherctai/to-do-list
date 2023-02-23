@@ -58,6 +58,14 @@ const clearProjectForm = () => {
     title.value = '';
 }
 
+const getActiveProject = (projectName, projectArray) => {
+    for (let i = 0; i < projectArray; i++) {
+        if (projectName === projectArray[i].title) {
+            return projectArray[i];
+        }
+    }
+}
+
 export {
     makeEditable,
     makeUneditable,
@@ -68,5 +76,6 @@ export {
     processNoteForm,
     clearNoteForm,
     processProjectForm,
-    clearProjectForm
+    clearProjectForm, 
+    getActiveProject
 }
