@@ -136,7 +136,8 @@ body {
     margin-left: auto; 
 }
 
-.btn.close-btn { 
+.btn.close-note-form-btn,
+.btn.close-project-form-btn { 
     display: block; 
     padding: 3px;   
     height: 30px; 

@@ -16,34 +16,45 @@ projectController.createProject('My Project');
 
 
 // displayController controls the display of the to-do list 
-const displayController = () => {
+const displayController = () => { 
     const initButtons = () => {
+        initAddProjectButton();
+        initCloseProjectFormButton();
         initAddNoteButton();
         initCloseNoteFormButton();
-        initSubmitButton();
+        initSubmitNoteButton();
     }
 
     const initAddProjectButton = () => {
+        const addProjectButton = document.querySelector('.add-project-btn');
+        addProjectButton.addEventListener('click', () => {
+            Utils.openProjectForm();
+        })
+    }
 
+    const initCloseProjectFormButton = () => {
+        const closeProjectFormButton = document.querySelector('.close-project-form-btn');
+        closeProjectFormButton.addEventListener('click', () => {
+            Utils.closeProjectForm();
+        })
     }
 
     const initAddNoteButton = () => {
         const addNoteButton = document.querySelector('.add-note-btn');
-        
         addNoteButton.addEventListener('click', () => {
-            Utils.openForm();
+            Utils.openNoteForm();
         })
     }
 
     const initCloseNoteFormButton = () => {
-        const closeNoteFormButton = document.querySelector('.close-btn');
+        const closeNoteFormButton = document.querySelector('.close-note-form-btn');
         closeNoteFormButton.addEventListener('click', () => {
-            Utils.closeForm();
+            Utils.closeNoteForm();
         })
     }
-    
-    const initSubmitButton = () => {
-        const submitButton = document.querySelector('.submit-btn');
+
+    const initSubmitNoteButton = () => {
+        const submitButton = document.querySelector('.submit-note-btn');
         let activeProject = getActiveProject(document.querySelector('.project-title').textContent);
         submitButton.addEventListener('click', () => {
             let formInfo = Utils.processForm();
@@ -53,7 +64,7 @@ const displayController = () => {
                 `${formInfo[3]}`);
             noteProjectStructurer.addNoteToProject(activeProject, note);
             Utils.clearForm();
-            Utils.closeForm();
+            Utils.closeNoteForm();
         })
     }
 
@@ -84,72 +95,71 @@ const projectDisplayer = () => {
         content.append(createProjectDisplay(project));
     }
 
+    const createProjectDisplay = (Project) => {
+        // Create the project title div 
+        let projectTitle = document.createElement('div');
+        
+        // Create the project content div 
+        let projectContent = document.createElement('div');
+        projectContent.classList.add('project'); 
+    
+        // Append notes to the project 
+        for (let i = 0; i < Project.noteArray.length; i++) {
+            let note = createNoteDisplay(Project.noteArray[i]);
+            projectContent.appendChild(note);
+        }
+    
+        return projectContent;
+    }
+    
+    const createNoteDisplay = (Note) => {
+        let note = document.createElement('div');
+        note.classList.add('note');
+    
+        // Create button
+        let button = document.createElement('button');
+        button.classList.add('btn', 'done-btn'); 
+        button.textContent = 'Done!';
+    
+        // Create title
+        let title = document.createElement('div');
+        title.classList.add('title');
+        title.textContent = Note.title;
+        title.setAttribute('contenteditable', 'true');
+        
+        // Create description
+        let description = document.createElement('div');
+        description.classList.add('description');
+        description.textContent = Note.description;
+        description.setAttribute('contenteditable', 'true');
+    
+    
+        // Create dueDate
+        let dueDate = document.createElement('div');
+        dueDate.classList.add('dueDate');
+        dueDate.textContent = Note.dueDate;
+        dueDate.setAttribute('contenteditable', 'true');
+    
+    
+        // Create priority 
+        let priority = document.createElement('div');
+        priority.classList.add('priority'); 
+        priority.textContent = Note.priority;
+        priority.setAttribute('contenteditable', 'true');
+    
+    
+        // Append elements
+        note.append(button, title, description, dueDate, priority);
+    
+        return note;
+    }
 
     return {
-        displayProject,
-
+        displayProject
     }
 }
 
 
-const createProjectDisplay = (Project) => {
-    // Create the project title div 
-    let projectTitle = document.createElement('div');
-    
-    // Create the project content div 
-    let projectContent = document.createElement('div');
-    projectContent.classList.add('project'); 
-
-    // Append notes to the project 
-    for (let i = 0; i < Project.noteArray.length; i++) {
-        let note = createNoteDisplay(Project.noteArray[i]);
-        projectContent.appendChild(note);
-    }
-
-    return projectContent;
-}
-
-const createNoteDisplay = (Note) => {
-    let note = document.createElement('div');
-    note.classList.add('note');
-
-    // Create button
-    let button = document.createElement('button');
-    button.classList.add('btn', 'done-btn'); 
-    button.textContent = 'Done!';
-
-    // Create title
-    let title = document.createElement('div');
-    title.classList.add('title');
-    title.textContent = Note.title;
-    title.setAttribute('contenteditable', 'true');
-    
-    // Create description
-    let description = document.createElement('div');
-    description.classList.add('description');
-    description.textContent = Note.description;
-    description.setAttribute('contenteditable', 'true');
-
-
-    // Create dueDate
-    let dueDate = document.createElement('div');
-    dueDate.classList.add('dueDate');
-    dueDate.textContent = Note.dueDate;
-    dueDate.setAttribute('contenteditable', 'true');
-
-
-    // Create priority 
-    let priority = document.createElement('div');
-    priority.classList.add('priority'); 
-    priority.textContent = Note.priority;
-    priority.setAttribute('contenteditable', 'true');
-
-
-    // Append elements
-    note.append(button, title, description, dueDate, priority);
-
-    return note;
-}
 
 
 // noteDisplayer displays individual notes 
@@ -203,8 +213,6 @@ const initNoteButtons = () => {
 export {
     displayController, 
     projectDisplayer,
-    createProjectDisplay,
-
 }
 
 /* projectDisplayer (DOM)

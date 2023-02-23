@@ -6,13 +6,23 @@ const makeUneditable = (element) => {
     element.setAttribute('contenteditable', 'false');
 }
 
-const openForm = () => {
+const openNoteForm = () => {
     const form = document.querySelector('.add-note-form');
     form.classList.remove('hidden');
 }
 
-const closeForm = () => {
+const closeNoteForm = () => {
     const form = document.querySelector('.add-note-form');
+    form.classList.add('hidden');
+}
+
+const openProjectForm = () => {
+    const form = document.querySelector('.add-project-form');
+    form.classList.remove('hidden');
+}
+
+const closeProjectForm = () => {
+    const form = document.querySelector('.add-project-form');
     form.classList.add('hidden');
 }
 
@@ -40,8 +50,10 @@ const clearForm = () => {
 export {
     makeEditable,
     makeUneditable,
-    openForm,
-    closeForm,
+    openNoteForm,
+    closeNoteForm,
+    openProjectForm,
+    closeProjectForm,
     processForm,
     clearForm
 }
