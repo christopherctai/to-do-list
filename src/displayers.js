@@ -18,9 +18,12 @@ projectController.createProject('My Project');
 // displayController controls the display of the to-do list 
 const displayController = () => { 
     const initButtons = () => {
+        // Initialize the Project Form
         initAddProjectButton();
         initCloseProjectFormButton();
         initSubmitProjectButton();
+
+        // Initialize the Note Form 
         initAddNoteButton();
         initCloseNoteFormButton();
         initSubmitNoteButton();
@@ -45,6 +48,7 @@ const displayController = () => {
         submitButton.addEventListener('click', () => {
             let formInfo = Utils.processProjectForm();
             projectController.createProject(formInfo);
+            console.log(projectController.projects); 
             Utils.clearProjectForm();
             Utils.closeProjectForm();
         })
@@ -89,6 +93,36 @@ const displayController = () => {
 
     return {
         initButtons
+    }
+}
+
+
+// sidebarDisplayer displays the sidebar. Needs access to the list of project titles
+const sidebarDisplayer = () => {
+    const displaySidebar = () => {
+        // Select the sidebar
+        let sidebar = document.querySelector('.project-list');
+
+        // Clear the sidebar
+        sidebar.textContent = '';
+
+        // Append the sidebar
+        sidebar.append(createSidebarDisplay()) 
+    }
+
+    const createSidebarDisplay = () => {
+        let sidebarProjectList = document.createElement('div');
+        for (let i = 0; i < projectController.projects.length; i++) {
+            let sidebarButton = document.createElement('button');
+            sidebarButton.classList.add('btn', 'sidebar-row');
+            sidebarButton.textContent = projectController.projects[i].title;
+            sidebarProjectList.append(sidebarButton);
+        }
+        return sidebarProjectList;
+    }
+
+    return {
+        displaySidebar
     }
 }
 
@@ -179,11 +213,6 @@ const noteDisplayer = () => {
 }
 
 
-// sidebarDisplayer displays the sidebar. Needs access to the list of project titles
-const sidebarDisplayer = () => {
-
-}
-
 const updateInfo = (pieceOfInfo, contentOfInfo, note) => {
     note.pieceOfInfo = contentOfInfo; 
     
@@ -224,6 +253,7 @@ const initNoteButtons = () => {
 export {
     displayController, 
     projectDisplayer,
+    sidebarDisplayer
 }
 
 /* projectDisplayer (DOM)
