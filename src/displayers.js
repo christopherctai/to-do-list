@@ -18,17 +18,29 @@ projectController.createProject('My Project');
 // displayController controls the display of the to-do list 
 const displayController = () => {
     const initButtons = () => {
-        const addNoteButton = document.querySelector('.add-note-btn');
-        const closeNoteButton = document.querySelector('.close-btn');
-        const submitButton = document.querySelector('.submit-btn');
-        let activeProject = getActiveProject(document.querySelector('.project-title').textContent);
+        initAddNoteButton();
+        initCloseNoteFormButton();
+        initSubmitButton();
+    }
+    const initAddProjectButton = () => {
 
+    }
+    const initAddNoteButton = () => {
+        const addNoteButton = document.querySelector('.add-note-btn');
+        
         addNoteButton.addEventListener('click', () => {
             Utils.openForm();
         })
-        closeNoteButton.addEventListener('click', () => {
+    }
+    const initCloseNoteFormButton = () => {
+        const closeNoteFormButton = document.querySelector('.close-btn');
+        closeNoteFormButton.addEventListener('click', () => {
             Utils.closeForm();
         })
+    }
+    const initSubmitButton = () => {
+        const submitButton = document.querySelector('.submit-btn');
+        let activeProject = getActiveProject(document.querySelector('.project-title').textContent);
         submitButton.addEventListener('click', () => {
             let formInfo = Utils.processForm();
             let note = noteController.createNote(`${formInfo[0]}`, 
@@ -41,8 +53,9 @@ const displayController = () => {
         })
     }
 
+
     return {
-        initButtons,
+        initButtons
     }
 }
 
