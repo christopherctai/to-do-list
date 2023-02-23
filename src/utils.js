@@ -16,10 +16,19 @@ const closeForm = () => {
     form.classList.add('hidden');
 }
 
+const processForm = (form) => {
+    console.log(form);
+}
+
+const clearForm = () => {
+
+}
 
 export {
     makeEditable,
     makeUneditable,
     openForm,
-    closeForm
+    closeForm,
+    processForm,
+    clearForm
 }

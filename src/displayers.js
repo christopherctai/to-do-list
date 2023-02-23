@@ -10,11 +10,17 @@ const displayController = () => {
     const initButtons = () => {
         const addNoteButton = document.querySelector('.add-note-btn');
         const closeNoteButton = document.querySelector('.close-btn');
+        const submitButton = document.querySelector('.submit-btn');
+        const form = document.querySelector('.add-note-form'); 
         addNoteButton.addEventListener('click', () => {
             Utils.openForm();
         })
         closeNoteButton.addEventListener('click', () => {
             Utils.closeForm();
+        })
+        submitButton.addEventListener('click', () => {
+            Utils.processForm(form);
+            Utils.clearForm();
         })
     }
 
