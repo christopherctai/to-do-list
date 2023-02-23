@@ -6,8 +6,6 @@ import * as Utils from './utils.js';
 
 import { format } from 'date-fns';
 
-// Initialize the page 
+// Initialize the application
 const displayController = Displayers.displayController();
-displayController.initButtons();
-
-
+displayController.initializeApp();
