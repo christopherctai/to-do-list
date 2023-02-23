@@ -19,8 +19,9 @@ const displayController = () => {
             Utils.closeForm();
         })
         submitButton.addEventListener('click', () => {
-            Utils.processForm(form);
+            Utils.processForm();
             Utils.clearForm();
+            Utils.closeForm();
         })
     }
 
