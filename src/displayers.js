@@ -12,9 +12,7 @@ const noteController = Controllers.noteController();
 const projectController = Controllers.projectController();
 const noteProjectStructurer = Structurers.noteProjectStructurer();
 
-let noteOne = noteController.createNote("hi", "test description", dateFormatted, "urgent");
-let noteTwo = noteController.createNote('again', 'second note', 'right now', 'right now');
-
+projectController.createProject('My Project');
 
 
 // displayController controls the display of the to-do list 
@@ -23,6 +21,8 @@ const displayController = () => {
         const addNoteButton = document.querySelector('.add-note-btn');
         const closeNoteButton = document.querySelector('.close-btn');
         const submitButton = document.querySelector('.submit-btn');
+        let activeProject = getActiveProject(document.querySelector('.project-title').textContent);
+
         addNoteButton.addEventListener('click', () => {
             Utils.openForm();
         })
@@ -31,7 +31,11 @@ const displayController = () => {
         })
         submitButton.addEventListener('click', () => {
             let formInfo = Utils.processForm();
-            
+            let note = noteController.createNote(`${formInfo[0]}`, 
+                `${formInfo[1]}`,
+                `${formInfo[2]}`,
+                `${formInfo[3]}`);
+            noteProjectStructurer.addNoteToProject(activeProject, note);
             Utils.clearForm();
             Utils.closeForm();
         })
@@ -42,6 +46,13 @@ const displayController = () => {
     }
 }
 
+const getActiveProject = (projectName) => {
+    for (let i = 0; i < projectController.projects.length; i++) {
+        if (projectName === projectController.projects[i].title) {
+            return projectController.projects[i];
+        }
+    }
+}
 
 // projectDisplayer helps displays the project
 const projectDisplayer = () => {
