@@ -221,9 +221,8 @@ const projectDisplayer = () => {
         title.classList.add('title');
         title.textContent = Note.title;
         title.setAttribute('contenteditable', 'true');
-        title.addEventListener('blur', () => {
-            updateNoteInfo(title, title.textContent, Note);
-            console.log(Note.title);
+        title.addEventListener('input', () => {
+            Note.title = title.textContent;
         })
         
         // Create description
@@ -231,8 +230,8 @@ const projectDisplayer = () => {
         description.classList.add('description');
         description.textContent = Note.description;
         description.setAttribute('contenteditable', 'true');
-        description.addEventListener('blur', () => {
-            updateNoteInfo(description, description.textContent, Note);
+        description.addEventListener('input', () => {
+            Note.description = description.textContent;
         })
     
         // Create dueDate
@@ -240,8 +239,8 @@ const projectDisplayer = () => {
         dueDate.classList.add('dueDate');
         dueDate.textContent = Note.dueDate;
         dueDate.setAttribute('contenteditable', 'true');
-        dueDate.addEventListener('blur', () => {
-            updateNoteInfo(dueDate, dueDate.textContent, Note);
+        dueDate.addEventListener('input', () => {
+            Note.dueDate = dueDate.textContent;
         })
     
         // Create priority 
@@ -249,19 +248,14 @@ const projectDisplayer = () => {
         priority.classList.add('priority'); 
         priority.textContent = Note.priority;
         priority.setAttribute('contenteditable', 'true');
-        priority.addEventListener('blur', () => {
-            updateNoteInfo(priority, priority.textContent, Note);
-            console.log(Note.priority);
+        priority.addEventListener('input', () => {
+            Note.priority = priority.textContent;
         })
     
         // Append elements
         note.append(button, title, description, dueDate, priority);
     
         return note;
-    }
-
-    const updateNoteInfo = (typeOfInfo, contentOfInfo, note) => {
-        note.typeOfInfo = contentOfInfo; 
     }
 
     return {
