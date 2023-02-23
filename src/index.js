@@ -34,7 +34,7 @@ let projectOne = projectController.createProject("new project");
 noteProjectStructurer.addNoteToProject(projectOne, noteOne);
 noteProjectStructurer.addNoteToProject(projectOne, noteTwo);
 
-/* projectDisplayer.displayProject(projectController.projects[0]); */ 
+projectDisplayer.displayProject(projectController.projects[0]);
 
 
 

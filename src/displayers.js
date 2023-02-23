@@ -68,7 +68,7 @@ const createNoteDisplay = (Note) => {
 
     // Create button
     let button = document.createElement('button');
-    button.classList.add('btn', 'close-btn');
+    button.classList.add('btn', 'done-btn'); 
     button.textContent = 'Done!';
 
     // Create title
