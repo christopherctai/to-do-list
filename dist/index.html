@@ -12,7 +12,9 @@
     <div class="header">
         <img src="./images/check-all.svg" alt="Checks" class="header-image">
         <div class="heading">To-Do List</div>
+        <button class="btn add-project-btn">Add a Project</button>
         <button class="btn add-note-btn">Add a Note</button>
+
     </div>
     <div class="sidebar">
         <div class="sidebar-section">
@@ -26,6 +28,17 @@
             <button class="sidebar-row btn">Project 4</button>
         </div>
     </div>
+    <form class="add-project-form hidden"> 
+        <div class="form-heading">
+            <div class="form-title">Add a Project</div>
+            <button class="btn close-btn" type="button">x</button> 
+        </div>
+        <div class="form-row">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" placeholder="Note Title go here!">
+        </div>
+        <button class="btn submit-btn" type="button">Add your Project!</button>
+    </form>
     <form class="add-note-form hidden"> 
         <div class="form-heading">
             <div class="form-title">Add a Note</div>

@@ -22,9 +22,11 @@ const displayController = () => {
         initCloseNoteFormButton();
         initSubmitButton();
     }
+
     const initAddProjectButton = () => {
 
     }
+
     const initAddNoteButton = () => {
         const addNoteButton = document.querySelector('.add-note-btn');
         
@@ -32,12 +34,14 @@ const displayController = () => {
             Utils.openForm();
         })
     }
+
     const initCloseNoteFormButton = () => {
         const closeNoteFormButton = document.querySelector('.close-btn');
         closeNoteFormButton.addEventListener('click', () => {
             Utils.closeForm();
         })
     }
+    
     const initSubmitButton = () => {
         const submitButton = document.querySelector('.submit-btn');
         let activeProject = getActiveProject(document.querySelector('.project-title').textContent);
@@ -53,19 +57,19 @@ const displayController = () => {
         })
     }
 
+    const getActiveProject = (projectName) => {
+        for (let i = 0; i < projectController.projects.length; i++) {
+            if (projectName === projectController.projects[i].title) {
+                return projectController.projects[i];
+            }
+        }
+    }
 
     return {
         initButtons
     }
 }
 
-const getActiveProject = (projectName) => {
-    for (let i = 0; i < projectController.projects.length; i++) {
-        if (projectName === projectController.projects[i].title) {
-            return projectController.projects[i];
-        }
-    }
-}
 
 // projectDisplayer helps displays the project
 const projectDisplayer = () => {
