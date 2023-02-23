@@ -24,6 +24,9 @@ const displayController = () => {
         initAddNoteButton();
         initCloseNoteFormButton();
         initSubmitNoteButton();
+
+        // do stuff for checking 
+        sidebarDisplayer().clearSidebar(); 
     }
 
     const initAddProjectButton = () => {
@@ -121,7 +124,6 @@ const sidebarDisplayer = () => {
                     button.textContent,
                     projectController.projects
                 );
-                console.log(activeProject);
                 projectDisplayer().displayProject(activeProject);
             })
         })

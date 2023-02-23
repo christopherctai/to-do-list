@@ -59,12 +59,12 @@ const clearProjectForm = () => {
 }
 
 const getActiveProject = (projectName, projectArray) => {
-    for (let i = 0; i < projectArray; i++) {
-        if (projectName === projectArray[i].title) {
-            console.log(projectArray[i]);
+    for (let i = 0; i < projectArray.length; i++) {
+        if (String(projectName) === String(projectArray[i].title)) {
             return projectArray[i];
         }
     }
+
 }
 
 export {
