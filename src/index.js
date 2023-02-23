@@ -6,19 +6,8 @@ import * as Utils from './utils.js';
 
 import { format } from 'date-fns';
 
-// Test control 
-console.log("hello world");
-
-
-let date = new Date();
-let dateFormatted = format(date, 'MM/dd/yyyy');
-console.log(dateFormatted);
-
-
 // Initialize the page 
 const displayController = Displayers.displayController();
-displayController.initButtons();  
- 
-
+displayController.initButtons();
 
 

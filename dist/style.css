@@ -213,12 +213,15 @@ textarea:focus {
     justify-content: top;  
     overflow-wrap: break-word;
 
-    border: 2px solid var(--grey); 
+    border: 1px solid gray; 
     border-radius: 10px; 
-    box-shadow: 2px 2px 4px 1px gray;
     padding: 20px;
     padding-top: 40px; 
 
+}
+
+.note:hover {
+    box-shadow: 2px 2px 4px 1px gray;
 }
 
 .note .title {
