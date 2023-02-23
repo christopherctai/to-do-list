@@ -15,6 +15,10 @@ let dateFormatted = format(date, 'MM/dd/yyyy');
 console.log(dateFormatted);
 
 
+// Initialize the page 
+const displayController = Displayers.displayController();
+displayController.initButtons(); 
+
 
 // Create a note
 const noteController = Controllers.noteController();
