@@ -23,7 +23,7 @@ const displayController = () => {
 
         // Initialize Main Project
         projectController.createProject('My Project'); 
-        projectController.displayProject(projectController.projects[0]);
+        projectDisplayer().displayProject(projectController.projects[0]);
     }
 
     const initButtons = () => {
@@ -273,50 +273,8 @@ const projectDisplayer = () => {
 }
 
 
-
-const initNoteButtons = (note) => {
-    const titles = document.querySelectorAll('.title');
-    const descriptions = document.querySelectorAll('.description');
-    const dueDates = document.querySelectorAll('.dueDate');
-    const priorities = document.querySelectorAll('.priority');
-
-    titles.forEach((title) => {
-        title.addEventListener('change', () => {
-            updateNoteInfo(title, title.textContent, note);
-        })
-    })
-
-    descriptions.forEach((description) => {
-        description.addEventListener('change', () => {
-            updateNoteInfo(description, description.textContent, note);
-        })
-    })
-
-    dueDates.forEach((dueDate) => {
-        dueDate.addEventListener('change', () => {
-            updateNoteInfo(dueDate, dueDate.textContent, note);
-        })
-    })
-
-    priorities.forEach((priority) => {
-        priority.addEventListener('change', () => {
-            updateNoteInfo(priority, priority.textContent, note);
-        })
-    })
-}
-
 export {
     displayController, 
     projectDisplayer,
     sidebarDisplayer
 }
-
-/* projectDisplayer (DOM)
--displays a project 
--relies on noteDisplayer
-
-noteDisplayer (DOM)
--displays a note 
-
-displayController (DOM)
--displays the to-do-list  */
