@@ -11,26 +11,8 @@ const noteController = () => {
         return note;
     }
 
-    // Allow users to change the title 
-    const changeTitle = () => {
-        
-    }
-
-    // Allow users to change the description of the note 
-    const changeDescription = () => {
-        
-    }
-
-    // Allow users to change the note's priority 
-    const changePriority = () => {
-
-    }
-
     return {
         createNote,
-        changeTitle,
-        changeDescription,
-        changePriority
     }
 }
 
