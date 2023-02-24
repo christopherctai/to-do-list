@@ -12,6 +12,13 @@ Requirements:
 Important notes: 
 -separate your application logic (ie, creating new todos, setting them as complete, changing priority, etc.) from your DOM-related stuff that gets DOM stuff and changes it 
 
+Last Finishes: 
+-fix bugs: my project default creation
+-decide on calendar and date stuff? 
+-keep in local storage 
+-projects cannot have the same name OR be blank 
+-requirements for adding a note
+
 Modules: 
 
 
