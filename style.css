@@ -83,7 +83,7 @@ body {
 }
 
 .btn:hover {
-    background-color: var(--dark-green); 
+    background-color: var(--dark-green);
 }
 
 .btn.done-btn {
