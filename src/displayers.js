@@ -141,10 +141,12 @@ const sidebarDisplayer = () => {
 
     const createSidebarDisplay = (sidebar) => {
         for (let i = 0; i < projectController.projects.length; i++) {
-            let sidebarButton = document.createElement('button');
-            sidebarButton.classList.add('btn', 'project-btn');
-            sidebarButton.textContent = projectController.projects[i].title;
-            sidebar.append(sidebarButton);
+            if (projectController.projects[i].title !== 'My Project') {
+                let sidebarButton = document.createElement('button');
+                sidebarButton.classList.add('btn', 'project-btn');
+                sidebarButton.textContent = projectController.projects[i].title;
+                sidebar.append(sidebarButton);
+            }
         }
     }
 
