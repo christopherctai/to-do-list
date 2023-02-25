@@ -177,6 +177,9 @@ const projectDisplayer = () => {
         // Append the title 
         content.append(createProjectTitleDisplay(project));
 
+        // Append the delete button
+        content.append(createProjectDeleteDisplay(project));
+
         // Append the content 
         content.append(createProjectDisplay(project));
     }
@@ -198,6 +201,25 @@ const projectDisplayer = () => {
         projectTitle.textContent = Project.title; 
 
         return projectTitle;
+    }
+
+    const createProjectDeleteDisplay = (Project) => {
+        if (Project.title === 'My Project') {
+            return '';
+        }
+        
+        let deleteProjectButton = document.createElement('button');
+        deleteProjectButton.classList.add('btn', 'delete-project-btn');
+        deleteProjectButton.textContent = 'Delete';
+
+        deleteProjectButton.addEventListener('click', () => {
+            projectController.deleteProject(Project);
+            projectDisplayer().displayProject(projectController.projects[0]);
+            sidebarDisplayer().displaySidebar();
+            alert(`${Project.title} has been deleted`);
+        });
+
+        return deleteProjectButton;
     }
 
     const createProjectDisplay = (Project) => {
