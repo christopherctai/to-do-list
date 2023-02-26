@@ -5,6 +5,7 @@ import { format } from 'date-fns';
 import * as Utils from './utils.js';
 import * as Controllers from './controllers.js';
 import * as Structurers from './structurers.js';
+import * as Storage from './storage.js';
 
 
 // Create controllers
@@ -24,6 +25,22 @@ const displayController = () => {
         // Initialize Main Project
         projectController.createProject('My Project'); 
         projectDisplayer().displayProject(projectController.projects[0]);
+    }
+
+    const initializeAppWithStorage = (projects) => {
+        // Initialize Main Project 
+        projectDisplayer().displayProject(projectController.projects[0]);
+
+        // Display the other projects 
+        for (let i = 1; i < projects.length; i++) {
+            projectDisplayer().displayProject(projects[i]);
+        }
+
+        // Display the sidebar 
+        sidebarDisplayer().displaySidebar()
+
+        // Initialize the project and note form 
+        initButtons();
     }
 
     const initButtons = () => {
@@ -58,6 +75,9 @@ const displayController = () => {
             // Create Project
             let formInfo = Utils.processProjectForm();
             projectController.createProject(formInfo);
+
+            // Store Projects
+            Storage.storeProjects();
 
             // Display project 
             let activeProject = Utils.getActiveProject(
@@ -109,6 +129,9 @@ const displayController = () => {
             // Add note to project 
             noteProjectStructurer.addNoteToProject(activeProject, note);
             
+            // Store Projects 
+            Storage.storeProjects();
+
             // Display Project 
             projectDisplayer().displayProject(activeProject);
 
@@ -119,7 +142,8 @@ const displayController = () => {
     }
 
     return {
-        initializeApp
+        initializeApp,
+        initializeAppWithStorage
     }
 }
 
@@ -217,6 +241,9 @@ const projectDisplayer = () => {
             projectDisplayer().displayProject(projectController.projects[0]);
             sidebarDisplayer().displaySidebar();
             alert(`${Project.title} has been deleted`);
+
+            // Store projects 
+            Storage.storeProjects();
         });
 
         return deleteProjectButton;
@@ -246,6 +273,8 @@ const projectDisplayer = () => {
         button.textContent = 'Done!'; 
         button.addEventListener('click', () => {
             noteProjectStructurer.deleteNoteFromProject(Project, Note);
+            // Store Projects 
+            Storage.storeProjects();
             note.remove();
         }) 
     
@@ -299,6 +328,7 @@ const projectDisplayer = () => {
 
 export {
     displayController, 
+    projectController,
     projectDisplayer,
     sidebarDisplayer
 }
