@@ -28,6 +28,12 @@ const displayController = () => {
     }
 
     const initializeAppWithStorage = (projects) => {
+
+        // Reset projects
+        projectController.projects = projects;
+
+        console.log(projectController.projects);
+
         // Initialize Main Project 
         projectDisplayer().displayProject(projectController.projects[0]);
 
@@ -39,7 +45,7 @@ const displayController = () => {
         // Display the sidebar 
         sidebarDisplayer().displaySidebar()
 
-        // Initialize the project and note form
+        // Initialize the project and note form 
         initButtons();
     }
 
@@ -123,8 +129,8 @@ const displayController = () => {
             let note = noteController.createNote(`${formInfo[0]}`, 
                 `${formInfo[1]}`,
                 `${formInfo[2]}`,
-                `${formInfo[3]}`);
-            console.log(activeProject);
+                `${formInfo[3]}`
+            );
 
             // Add note to project 
             noteProjectStructurer.addNoteToProject(activeProject, note);
@@ -238,12 +244,15 @@ const projectDisplayer = () => {
 
         deleteProjectButton.addEventListener('click', () => {
             projectController.deleteProject(Project);
+            console.log(projectController.projects);
+            // Store projects 
+            Storage.storeProjects(); 
+
             projectDisplayer().displayProject(projectController.projects[0]);
             sidebarDisplayer().displaySidebar();
             alert(`${Project.title} has been deleted`);
 
-            // Store projects 
-            Storage.storeProjects();
+            console.log(projectController.projects);
         });
 
         return deleteProjectButton;
