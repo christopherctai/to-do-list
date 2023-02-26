@@ -39,7 +39,7 @@ const displayController = () => {
         // Display the sidebar 
         sidebarDisplayer().displaySidebar()
 
-        // Initialize the project and note form 
+        // Initialize the project and note form
         initButtons();
     }
 
