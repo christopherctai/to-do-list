@@ -6,6 +6,7 @@ const displayController = Displayers.displayController();
 if (localStorage.getItem('user') === null) {
     displayController.initializeApp();
 } else {
-    let projects = JSON.parse(window.localStorage.getItem('user'));
-    displayController.initializeAppWithStorage(projects);   
+    displayController.initializeApp();
+    /* let projects = JSON.parse(window.localStorage.getItem('user'));
+    displayController.initializeAppWithStorage(projects); */    
 }

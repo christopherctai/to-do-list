@@ -30,6 +30,8 @@ const projectController = () => {
 
     // Delete a project 
     const deleteProject = (project) => {
+        console.log(project);
+        console.log(projects);
         projects.splice(projects.indexOf(project), 1);
     }
     

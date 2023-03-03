@@ -8,9 +8,10 @@ import * as Structurers from './structurers.js';
 import * as Storage from './storage.js';
 
 
+
 // Create controllers
 const noteController = Controllers.noteController();
-const projectController = Controllers.projectController();
+let projectController = Controllers.projectController();
 const noteProjectStructurer = Structurers.noteProjectStructurer();
 
 // displayController controls the display of the to-do list 
@@ -25,15 +26,13 @@ const displayController = () => {
         // Initialize Main Project
         projectController.createProject('My Project'); 
         projectDisplayer().displayProject(projectController.projects[0]);
+
     }
-
+    
     const initializeAppWithStorage = (projects) => {
-
         // Reset projects
         projectController.projects = projects;
-
-        console.log(projectController.projects);
-
+        
         // Initialize Main Project 
         projectDisplayer().displayProject(projectController.projects[0]);
 
@@ -80,7 +79,10 @@ const displayController = () => {
         submitButton.addEventListener('click', () => {
             // Create Project
             let formInfo = Utils.processProjectForm();
+            
             projectController.createProject(formInfo);
+
+            console.log(projectController.projects);
 
             // Store Projects
             Storage.storeProjects(projectController.projects);
@@ -243,8 +245,9 @@ const projectDisplayer = () => {
         deleteProjectButton.textContent = 'Delete';
 
         deleteProjectButton.addEventListener('click', () => {
-            projectController.deleteProject(Project);
             console.log(projectController.projects);
+
+            projectController.deleteProject(Project);
             // Store projects 
             Storage.storeProjects(projectController.projects); 
 
@@ -252,7 +255,6 @@ const projectDisplayer = () => {
             sidebarDisplayer().displaySidebar();
             alert(`${Project.title} has been deleted`);
 
-            console.log(projectController.projects);
         });
 
         return deleteProjectButton;
