@@ -83,7 +83,7 @@ const displayController = () => {
             projectController.createProject(formInfo);
 
             // Store Projects
-            Storage.storeProjects();
+            Storage.storeProjects(projectController.projects);
 
             // Display project 
             let activeProject = Utils.getActiveProject(
@@ -136,7 +136,7 @@ const displayController = () => {
             noteProjectStructurer.addNoteToProject(activeProject, note);
             
             // Store Projects 
-            Storage.storeProjects();
+            Storage.storeProjects(projectController.projects);
 
             // Display Project 
             projectDisplayer().displayProject(activeProject);
@@ -246,7 +246,7 @@ const projectDisplayer = () => {
             projectController.deleteProject(Project);
             console.log(projectController.projects);
             // Store projects 
-            Storage.storeProjects(); 
+            Storage.storeProjects(projectController.projects); 
 
             projectDisplayer().displayProject(projectController.projects[0]);
             sidebarDisplayer().displaySidebar();
@@ -283,7 +283,7 @@ const projectDisplayer = () => {
         button.addEventListener('click', () => {
             noteProjectStructurer.deleteNoteFromProject(Project, Note);
             // Store Projects 
-            Storage.storeProjects();
+            Storage.storeProjects(projectController.projects);
             note.remove();
         }) 
     
