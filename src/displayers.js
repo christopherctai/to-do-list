@@ -32,6 +32,8 @@ const displayController = () => {
     const initializeAppWithStorage = (projects) => {
         // Reset projects
         projectController.projects = projects;
+        console.log(projects);
+
         
         // Initialize Main Project 
         projectDisplayer().displayProject(projectController.projects[0]);
@@ -81,8 +83,6 @@ const displayController = () => {
             let formInfo = Utils.processProjectForm();
             
             projectController.createProject(formInfo);
-
-            console.log(projectController.projects);
 
             // Store Projects
             Storage.storeProjects(projectController.projects);
@@ -245,7 +245,6 @@ const projectDisplayer = () => {
         deleteProjectButton.textContent = 'Delete';
 
         deleteProjectButton.addEventListener('click', () => {
-            console.log(projectController.projects);
 
             projectController.deleteProject(Project);
             // Store projects 
